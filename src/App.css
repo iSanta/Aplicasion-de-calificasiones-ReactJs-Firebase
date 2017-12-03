@@ -1,0 +1,97 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.App{
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.App .header{
+  position: relative;
+  width: 100%;
+  height: 13vw;
+  background: #4CAF50;
+  z-index: 2;
+}
+.App .header .menuContainer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 4vw;
+  background: #43A047;
+}
+
+.App .header .menuContainer .menuText{
+  position: relative;
+  padding:1vw;
+  background: #43A047;
+  color: #fff;
+}
+.App .header .sessionInfo{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 23vw;
+  height: auto;
+}
+
+.App .header .sessionInfo .user{
+  position: relative;
+  float: left;
+}
+.App .header .sessionInfo .user .sessionClose{
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.App .pageContent{
+  position: relative;
+  width: 70%;
+  left: 15%;
+  min-height: 10vw;
+  transition: all .3s;
+
+}
+.cout{
+  position: relative;
+  width: 95%;
+  left: 2.5%;
+  padding: 20px 0px;
+  min-height: 40vw;
+  transition: all .3s;
+
+}
+.transition{
+  transition: all .3s;
+}
+
+.footer{
+  position: relative;
+  width: 100%;
+  height: 10vw;
+  background: #4CAF50;
+}
+
+.App .footer .menuContainer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3vw;
+  background: #43A047;
+  text-align: center;
+  line-height: 3vw;
+  color: #fff;
+}
+.tableEspace{
+  position: relative;
+  width: 100%;
+  overflow-x:scroll;
+}
+.tableS{
+  position: relative;
+  width: 100vw;
+}

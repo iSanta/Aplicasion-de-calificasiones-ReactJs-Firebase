@@ -10,7 +10,7 @@ firebase.initializeApp({
   authDomain: "universidad-41c49.firebaseapp.com",
   databaseURL: "https://universidad-41c49.firebaseio.com",
   projectId: "universidad-41c49",
-  storageBucket: "",
+  storageBucket: "universidad-41c49.appspot.com",
   messagingSenderId: "130858667369"
 });
 

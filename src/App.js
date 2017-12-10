@@ -10,6 +10,7 @@ import NotesContent from './components/notesContent';
 import NewAsignature from './components/newAsignature';
 import UpdateContent from './components/updateContent';
 import Footer from './components/footer';
+import LogMail from './components/logMail';
 
 //----------------------------Material UI
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -17,6 +18,7 @@ import Paper from 'material-ui/Paper';
 import Colors, {green600, green900, fullWhite, transparent} from 'material-ui/styles/colors';
 import RaisedButton from 'material-ui/RaisedButton';
 import CommunicationVpnKey from 'material-ui/svg-icons/communication/vpn-key';
+import Snackbar from 'material-ui/Snackbar';
 
 
 
@@ -27,13 +29,16 @@ class App extends Component {
     super();
     this.state={
       user: null,
-      actualPage: 0
+      actualPage: 0,
+      snackBar: false,
+      message: ' ',
     };
     this.loadMenu = this.loadMenu.bind(this);
     this.menuChange = this.menuChange.bind(this);
     this.close = this.close.bind(this);
     this.loggin = this.loggin.bind(this);
     this.componentWillMount = this.componentWillMount.bind(this);
+    this.logEmail = this.logEmail.bind(this);
   }
 
   componentWillMount(){
@@ -70,16 +75,19 @@ class App extends Component {
             dbRef.set(record);
         }
       });
-
-
-
-
-
-
-
     })
   }
 
+
+  emailLoged = (info) =>{
+    console.log('datos del componente: ' + info.displayName)
+    this.setState({
+      user: info,
+      actualPage: 0,
+      message: 'Has iniciado sesión de forma correcta.',
+      snackBar: true,
+    })
+  }
   loadContent(){
     switch (this.state.actualPage) {
       case 0:
@@ -103,6 +111,11 @@ class App extends Component {
           <UpdateContent userId={this.state.user.uid} />
         );
         break;
+      case 4:
+        return(
+          <LogMail loged={this.emailLoged}/>
+        );
+        break;
 
       default:
         return(
@@ -117,7 +130,14 @@ class App extends Component {
      .catch(error => console.log('Error ' + error.code + ' : ' + error.message))
 
     this.setState({
-      actualPage: 0
+      actualPage: 0,
+      user: null
+    })
+  }
+
+  logEmail(){
+    this.setState({
+      actualPage: 4
     })
   }
   loggin(){
@@ -127,16 +147,17 @@ class App extends Component {
       // result lo retorna Firebase, .then es para cuando la conexion es correcta, .catch es cuando fracasa, ${result.user.email} simplemente accede a las variables del objeto result, la sintaxis corresponde a un concatenamiento sin separar el string, esta sintaxis por alguna razon no me funciono :(
       .then(result => console.log(result.user.email + ' ha iniciado sesion'))
       .catch(error => console.log('Error ' + error.code + ' : ' + error.message))
-
-
-
-
   }
 
   menuChange(e){
     console.log(e);
     this.setState({
       actualPage: e
+    })
+  }
+  handleRequestCloseSnackbar = () =>{
+    this.setState({
+      snackBar: false,
     })
   }
 
@@ -159,7 +180,7 @@ class App extends Component {
           <div className='superiorMenu'>
             <img width='30%' src={logo}/>
           </div>
-          <SessionInit onClicked={this.loggin}/>
+          <SessionInit onClicked={this.loggin} logMail={this.logEmail}/>
         </header>
 
       )
@@ -179,6 +200,12 @@ class App extends Component {
 
 
         </div>
+        <Snackbar
+          open={this.state.snackBar}
+          message={this.state.message}
+          autoHideDuration={4000}
+          onRequestClose={this.handleRequestCloseSnackbar}
+        />
       </MuiThemeProvider>
     );
   }

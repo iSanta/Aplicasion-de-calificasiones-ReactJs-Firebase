@@ -19,6 +19,15 @@ class sessionInit extends Component{
               label="Cuenta de Google"
               icon={<CommunicationVpnKey color={fullWhite} />}
             />
+            <RaisedButton
+              onClick={this.props.logMail}
+              backgroundColor={green900}
+              labelColor={fullWhite}
+              style={{marginLeft: "10px"}}
+              label="Correo Electronico"
+              icon={<CommunicationVpnKey color={fullWhite} />}
+            />
+
           </p>
         </Paper>
       </div>

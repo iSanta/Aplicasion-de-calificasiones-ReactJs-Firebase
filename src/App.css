@@ -95,3 +95,11 @@
   position: relative;
   width: 100vw;
 }
+
+.separeDiv{
+  position: relative;
+  width: 44%;
+  float: left;
+  margin-top: 50px;
+  padding: 50px 2.5% 50px 2.5%;
+}

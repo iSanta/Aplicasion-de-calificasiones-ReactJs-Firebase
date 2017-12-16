@@ -103,23 +103,3 @@
   margin-top: 50px;
   padding: 50px 2.5% 50px 2.5%;
 }
-.separeDivForm{
-  width: 44%;
-  float: left;
-  padding: 0 3%;
-}
-
-.table{
-  width: 100%;
-  display: table;
-  clear: both;
-}
-
-#publisher{
-  position: relative;
-  width: 100%;
-  margin: 15px 0px;
-}
-#wall{
-  margin: 15px 0px;
-}

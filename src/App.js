@@ -92,7 +92,7 @@ class App extends Component {
     switch (this.state.actualPage) {
       case 0:
         return(
-          <HomeContent />
+          <HomeContent user={this.state.user}/>
         );
         break;
 
